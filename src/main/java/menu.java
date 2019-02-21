@@ -14,7 +14,7 @@ public class menu {
                     "  \\/_____/   \\/_/\\/_/   \\/_/  \\/_/   \\/_____/      \\/_____/   \\/_____/   \\/_/ \\/_/     \\/_/   \\/_____/   \\/_/ /_/ \n"
             );
 
-            System.out.println("Which game would you like to play?\n1. Gomuko\n2. Game 2\n3. Game 3\n4. Quit");
+            System.out.println("Which game would you like to play?\n1. Gomuko\n2. Connect Four\n3. Game 3\n4. Quit");
 
             Scanner reader = new Scanner(System.in);
             while (choice < 1 || choice > 4) {
