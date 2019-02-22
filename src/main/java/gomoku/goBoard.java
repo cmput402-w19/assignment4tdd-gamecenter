@@ -170,7 +170,7 @@ public class goBoard {
                         win_sums[x][0] = 0;
                         win_sums[x][1] += 1;
 
-                        if (win_sums[x][1] == -1){
+                        if (win_sums[x][1] >= 5){
                             whitescore += 1;
                             return -1;
                         }

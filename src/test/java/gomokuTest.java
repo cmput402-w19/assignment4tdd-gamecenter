@@ -1,5 +1,11 @@
 import gomoku.goBoard;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.Assert.*;
 
 public class gomokuTest {
@@ -25,6 +31,19 @@ public class gomokuTest {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
+    @Before
+    public void setUpStream(){
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @After
+    public void restoreStreans(){
+        System.setOut(originalOut);
+    }
 
     @Test
     public void CreateEmptyBoard(){
@@ -61,6 +80,7 @@ public class gomokuTest {
 
         assertArrayEquals(gob.board, board);
 
+        assertEquals(gob.validMove(8, 4), "");
         gob.playMove(8, 4);
         board[3][7] = -1;
         assertArrayEquals(gob.board, board);
@@ -88,22 +108,215 @@ public class gomokuTest {
         goBoard gob = new goBoard();
         assertEquals(gob.checkWinner(), 0);
 
+        gob.printBoard();
+        assertEquals("[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator"), outContent.toString());
+
+        outContent.reset();
         for (int x=0; x < 5; x++){
             gob.board[1][x] = 1;
         }
         assertEquals(gob.checkWinner(), 1);
 
+        gob.printBoard();
+        assertEquals("[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[B, B, B, B, B, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator"), outContent.toString());
+
+        outContent.reset();
         gob.reset();
         for (int x=0; x < 5; x++){
             gob.board[x][1] = 1;
         }
         assertEquals(gob.checkWinner(), 1);
 
+        gob.printBoard();
+        assertEquals("[*, B, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, B, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, B, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, B, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, B, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator"), outContent.toString());
+
+        outContent.reset();
         gob.reset();
         for (int x=0; x < 5; x++){
             gob.board[x][x] = 1;
         }
         assertEquals(gob.checkWinner(), 1);
+
+        gob.printBoard();
+        assertEquals("[B, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, B, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, B, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, B, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, B, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator") +
+                "[*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *]" +
+                System.getProperty("line.separator"), outContent.toString());
+
+        gob.reset();
+        for (int x=5; x < 10; x++){
+            gob.board[x][x] = -1;
+        }
+        assertEquals(gob.checkWinner(), -1);
+
+        gob.board = new int[][]{
+                {1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1},
+                {-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1},
+                {1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1},
+                {-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1},
+                {-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1},
+                {-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1},
+                {1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1},
+                {-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1},
+                {1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1},
+                {-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1},
+                {1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1},
+                {1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1},
+                {1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1},
+                {-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1},
+                {1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1},
+                {-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1},
+                {-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1},
+                {-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1},
+                {1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1},
+        };
+
+        assertEquals(gob.checkWinner(), 2);
 
     }
 
@@ -146,6 +359,14 @@ public class gomokuTest {
         assertEquals(gob.blackscore, 1);
         assertEquals(gob.whitescore, 2);
         assertEquals(gob.ties, 0);
+    }
+
+    @Test
+    public void Scoreboard(){
+        goBoard gob = new goBoard();
+        gob.printScore();
+        assertEquals("Scoreboard\n-------------\nBlack: " + gob.blackscore + "\nWhite: " + gob.whitescore +
+                "\nTies: " + gob.ties + System.getProperty("line.separator"), outContent.toString());
     }
 
 }
