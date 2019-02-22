@@ -1,3 +1,5 @@
+package main;
+
 import gomoku.goMain;
 
 import java.util.Scanner;

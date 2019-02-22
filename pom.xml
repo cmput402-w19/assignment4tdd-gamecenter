@@ -26,7 +26,8 @@
                 <configuration>
                     <instrumentation>
                         <excludes>
-                            <exclude>gomoku.goMain</exclude>
+                            <exclude>com.main.menu</exclude>
+                            <exclude>com.gomoku.goMain</exclude>
                         </excludes>
                     </instrumentation>
                     <formats>
