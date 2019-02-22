@@ -25,10 +25,10 @@
                 <version>2.7</version>
                 <configuration>
                     <instrumentation>
-                        <excludes>
-                            <exclude>src/main/java/gomoku/goMain.java</exclude>
-                            <exclude>src/main/java/menu.java</exclude>
-                        </excludes>
+                        <ignores>
+                            <ignore>menu</ignore>
+                            <ignore>com.sun.java.gomoku.goMain</ignore>
+                        </ignores>
                     </instrumentation>
                     <formats>
                         <format>html</format>
