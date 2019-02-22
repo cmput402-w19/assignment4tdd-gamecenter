@@ -5,4 +5,4 @@ script:
   - mvn cobertura:cobertura
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -t 95ecb901-2710-4c47-9646-af2f8e3bfe0a -f '!src\main\java\menu.java' -f '!src\main\java\gomoku\goMain.java'
+  - bash <(curl -s https://codecov.io/bash) -t 95ecb901-2710-4c47-9646-af2f8e3bfe0a
