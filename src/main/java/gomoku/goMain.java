@@ -52,7 +52,6 @@ public class goMain {
             gob.printBoard();
 
             boolean input = false;
-            String choice = "";
             int x = 0, y = 0;
             while (!input){
 
@@ -63,14 +62,15 @@ public class goMain {
                 }
                 System.out.print(" to play. Please input your move as xx-yy: ");
 
-                choice = reader.nextLine();
+                String choice = reader.nextLine();
                 if (choice.length() > 5 || choice.length() < 3) {
-                    ;
+                    continue;
                 }else if (choice.equalsIgnoreCase("quit")){
                     return;
-                }else {
-                    input = errorCheckChoice(choice);
+                }else if (!errorCheckChoice(choice)) {
+                    continue;
                 }
+
 
                 String[] data = choice.split("-");
                 x = Integer.parseInt(data[0]);
@@ -80,6 +80,8 @@ public class goMain {
                 if (!err.equals("")){
                     System.out.println(err);
                     input = false;
+                }else{
+                    input = true;
                 }
 
             }
@@ -92,7 +94,7 @@ public class goMain {
     }
 
     private boolean errorCheckChoice(String input){
-        if (!input.contains("-")){
+        if (input.length() - input.replace("-", "").length() != 1){
             return false;
         }
 

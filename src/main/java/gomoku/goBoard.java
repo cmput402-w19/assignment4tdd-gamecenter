@@ -150,7 +150,6 @@ public class goBoard {
         }
 
         // Check diagonal
-
         for(int offset = 0; offset < 15; offset++){
             int[][] win_sums = {{0, 0}, {0, 0}, {0, 0}, {0, 0}};
 
