@@ -26,16 +26,18 @@
                 <configuration>
                     <instrumentation>
                         <excludes>
-                            <exclude>main.menu</exclude>
-                            <exclude>gomoku.goMain</exclude>
+                            <exclude>main/menu.class</exclude>
+                            <exclude>gomoku/goMain.class</exclude>
                         </excludes>
                     </instrumentation>
-                    <formats>
-                        <format>html</format>
-                        <format>xml</format>
-                    </formats>
-                    <check />
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
