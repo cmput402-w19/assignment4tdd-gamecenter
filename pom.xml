@@ -30,6 +30,11 @@
                             <exclude>gomoku/goMain.class</exclude>
                         </excludes>
                     </instrumentation>
+                    <formats>
+                        <format>html</format>
+                        <format>xml</format>
+                    </formats>
+                    <check />
                 </configuration>
             </plugin>
         </plugins>
