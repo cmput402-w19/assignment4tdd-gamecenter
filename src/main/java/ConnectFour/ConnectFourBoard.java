@@ -1,6 +1,5 @@
 package ConnectFour;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class ConnectFourBoard {
