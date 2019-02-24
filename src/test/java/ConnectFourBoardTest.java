@@ -4,8 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test class for ConnectFourBoard class.
+ */
 public class ConnectFourBoardTest {
-
     private static final int COLUMNS = 7;
     private static final int ROWS = 6;
 
