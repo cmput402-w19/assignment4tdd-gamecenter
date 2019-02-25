@@ -165,10 +165,10 @@ public class ConnectFourBoardTest {
     }
 
     /**
-     * Tests if the board is printed properly when empty.
+     * Tests if the board is printed properly.
      */
     @Test
-    public void testPrintEmptyBoard() {
+    public void testPrintBoard() {
         StringBuilder emptyBoardStringBuilder = new StringBuilder();
         emptyBoardStringBuilder.append("\r\n");
         emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
