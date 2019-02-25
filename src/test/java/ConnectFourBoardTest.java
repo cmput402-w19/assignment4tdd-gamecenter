@@ -177,31 +177,32 @@ public class ConnectFourBoardTest {
     @Test
     public void testPrintBoard() {
         StringBuilder emptyBoardStringBuilder = new StringBuilder();
-        emptyBoardStringBuilder.append("\r\n");
+        emptyBoardStringBuilder.append(System.getProperty("line.separator"));
         emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
         emptyBoardStringBuilder.append("\n");
         emptyBoardStringBuilder.append("-------------------------");
-        emptyBoardStringBuilder.append("\r\n");
+        emptyBoardStringBuilder.append(System.getProperty("line.separator"));
         emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
         emptyBoardStringBuilder.append("\n");
         emptyBoardStringBuilder.append("-------------------------");
-        emptyBoardStringBuilder.append("\r\n");
+        emptyBoardStringBuilder.append( System.getProperty("line.separator"));
         emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
         emptyBoardStringBuilder.append("\n");
         emptyBoardStringBuilder.append("-------------------------");
-        emptyBoardStringBuilder.append("\r\n");
+        emptyBoardStringBuilder.append(System.getProperty("line.separator"));
         emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
         emptyBoardStringBuilder.append("\n");
         emptyBoardStringBuilder.append("-------------------------");
-        emptyBoardStringBuilder.append("\r\n");
+        emptyBoardStringBuilder.append(System.getProperty("line.separator"));
         emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
         emptyBoardStringBuilder.append("\n");
         emptyBoardStringBuilder.append("-------------------------");
-        emptyBoardStringBuilder.append("\r\n");
+        emptyBoardStringBuilder.append(System.getProperty("line.separator"));
         emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
         emptyBoardStringBuilder.append("\n");
         emptyBoardStringBuilder.append("-------------------------");
-        emptyBoardStringBuilder.append("\r\n\r\n");
+        emptyBoardStringBuilder.append(System.getProperty("line.separator"));
+        emptyBoardStringBuilder.append(System.getProperty("line.separator"));
 
         this.board.printBoard();
         assert(outContent.toString().equals(emptyBoardStringBuilder.toString()));
@@ -217,31 +218,32 @@ public class ConnectFourBoardTest {
         };
 
         StringBuilder nonEmptyBoardStringBuilder = new StringBuilder();
-        nonEmptyBoardStringBuilder.append("\r\n");
+        nonEmptyBoardStringBuilder.append(System.getProperty("line.separator"));
         nonEmptyBoardStringBuilder.append("O |   |   |   |   |   |  ");
         nonEmptyBoardStringBuilder.append("\n");
         nonEmptyBoardStringBuilder.append("-------------------------");
-        nonEmptyBoardStringBuilder.append("\r\n");
+        nonEmptyBoardStringBuilder.append(System.getProperty("line.separator"));
         nonEmptyBoardStringBuilder.append("X |   |   |   |   |   |  ");
         nonEmptyBoardStringBuilder.append("\n");
         nonEmptyBoardStringBuilder.append("-------------------------");
-        nonEmptyBoardStringBuilder.append("\r\n");
+        nonEmptyBoardStringBuilder.append(System.getProperty("line.separator"));
         nonEmptyBoardStringBuilder.append("O |   |   |   |   |   |  ");
         nonEmptyBoardStringBuilder.append("\n");
         nonEmptyBoardStringBuilder.append("-------------------------");
-        nonEmptyBoardStringBuilder.append("\r\n");
+        nonEmptyBoardStringBuilder.append(System.getProperty("line.separator"));
         nonEmptyBoardStringBuilder.append("X |   |   |   |   |   |  ");
         nonEmptyBoardStringBuilder.append("\n");
         nonEmptyBoardStringBuilder.append("-------------------------");
-        nonEmptyBoardStringBuilder.append("\r\n");
+        nonEmptyBoardStringBuilder.append(System.getProperty("line.separator"));
         nonEmptyBoardStringBuilder.append("O |   |   |   |   |   |  ");
         nonEmptyBoardStringBuilder.append("\n");
         nonEmptyBoardStringBuilder.append("-------------------------");
-        nonEmptyBoardStringBuilder.append("\r\n");
+        nonEmptyBoardStringBuilder.append(System.getProperty("line.separator"));
         nonEmptyBoardStringBuilder.append("X | O | X | O | X | O | X");
         nonEmptyBoardStringBuilder.append("\n");
         nonEmptyBoardStringBuilder.append("-------------------------");
-        nonEmptyBoardStringBuilder.append("\r\n\r\n");
+        nonEmptyBoardStringBuilder.append(System.getProperty("line.separator"));
+        nonEmptyBoardStringBuilder.append(System.getProperty("line.separator"));
 
         doReturn(fakeBoard).when(spyBoard).getBoard();
 
