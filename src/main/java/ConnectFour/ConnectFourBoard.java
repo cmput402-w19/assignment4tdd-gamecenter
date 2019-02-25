@@ -82,8 +82,18 @@ public class ConnectFourBoard {
         return this.winner;
     }
 
+    /**
+     * Checks if the board is full.
+     * @return true if the board is full, false otherwise.
+     */
     public boolean isFull() {
-        throw new NotImplementedException();
+        for (int i = 0; i < COLUMNS; ++i) {
+            if (!this.isColumnFull(i)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -130,8 +140,26 @@ public class ConnectFourBoard {
         }
     }
 
+    /**
+     * Prints the board.
+     *
+     * Based on TicTacToe "printBoard" by Sarah Nadi:
+     * https://github.com/cmput402-w19/tictactoe
+     */
     public void printBoard(){
-        throw new NotImplementedException();
+        System.out.println();
+        for(int row  = 0; row < ROWS; ++row){
+            for(int column = 0 ; column < COLUMNS; ++column){
+                System.out.print(this.getSymbol(this.getBoard()[row][column]));
+                if (column != COLUMNS - 1) {
+                    System.out.print(" | ");
+                }
+            }
+
+            System.out.println("\n-------------------------");
+        }
+
+        System.out.println();
     }
 
     /**
