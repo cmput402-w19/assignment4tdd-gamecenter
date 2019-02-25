@@ -82,6 +82,10 @@ public class ConnectFourBoard {
         return this.winner;
     }
 
+    public boolean isFull() {
+        throw new NotImplementedException();
+    }
+
     /**
      * Plays a move on the game board.
      * @param column the column to drop a player piece into
@@ -124,6 +128,10 @@ public class ConnectFourBoard {
                 this.currentPlayer = Player.X;
             }
         }
+    }
+
+    public void printBoard(){
+        throw new NotImplementedException();
     }
 
     /**

@@ -2,6 +2,10 @@ import ConnectFour.ConnectFourBoard;
 import ConnectFour.InvalidMoveException;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.mockito.Mockito.*;
 
 /**
@@ -10,12 +14,37 @@ import static org.mockito.Mockito.*;
 public class ConnectFourBoardTest {
     private static final int COLUMNS = 7;
     private static final int ROWS = 6;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     private ConnectFourBoard board;
 
     @Before
     public void setup() {
         this.board = new ConnectFourBoard();
+        System.setOut(new PrintStream(outContent));
+    }
+
+    /**
+     * Tests if the board is full.
+     */
+    @Test
+    public void testFullBoard() {
+        assert(!this.board.isFull());
+
+        ConnectFourBoard spyBoard = spy(this.board);
+        ConnectFourBoard.Player[][] fakeBoard = {
+                {ConnectFourBoard.Player.O, ConnectFourBoard.Player.X, ConnectFourBoard.Player.O, ConnectFourBoard.Player.O, ConnectFourBoard.Player.X, ConnectFourBoard.Player.X, ConnectFourBoard.Player.O},
+                {ConnectFourBoard.Player.X, ConnectFourBoard.Player.O, ConnectFourBoard.Player.X, ConnectFourBoard.Player.X, ConnectFourBoard.Player.O, ConnectFourBoard.Player.O, ConnectFourBoard.Player.X},
+                {ConnectFourBoard.Player.O, ConnectFourBoard.Player.X, ConnectFourBoard.Player.O, ConnectFourBoard.Player.O, ConnectFourBoard.Player.X, ConnectFourBoard.Player.X, ConnectFourBoard.Player.O},
+                {ConnectFourBoard.Player.X, ConnectFourBoard.Player.O, ConnectFourBoard.Player.X, ConnectFourBoard.Player.X, ConnectFourBoard.Player.O, ConnectFourBoard.Player.O, ConnectFourBoard.Player.X},
+                {ConnectFourBoard.Player.O, ConnectFourBoard.Player.X, ConnectFourBoard.Player.O, ConnectFourBoard.Player.O, ConnectFourBoard.Player.X, ConnectFourBoard.Player.X, ConnectFourBoard.Player.O},
+                {ConnectFourBoard.Player.X, ConnectFourBoard.Player.O, ConnectFourBoard.Player.X, ConnectFourBoard.Player.X, ConnectFourBoard.Player.O, ConnectFourBoard.Player.O, ConnectFourBoard.Player.X},
+        };
+
+
+        doReturn(fakeBoard).when(spyBoard).getBoard();
+
+        assert(spyBoard.isFull());
     }
 
     /**
@@ -133,6 +162,86 @@ public class ConnectFourBoardTest {
 
         doReturn(fakeBoard).when(spyBoard).getBoard();
         spyBoard.playMove(0);
+    }
+
+    /**
+     * Tests if the board is printed properly when empty.
+     */
+    @Test
+    public void testPrintEmptyBoard() {
+        StringBuilder emptyBoardStringBuilder = new StringBuilder();
+        emptyBoardStringBuilder.append("\r\n");
+        emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
+        emptyBoardStringBuilder.append("\n");
+        emptyBoardStringBuilder.append("-------------------------");
+        emptyBoardStringBuilder.append("\r\n");
+        emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
+        emptyBoardStringBuilder.append("\n");
+        emptyBoardStringBuilder.append("-------------------------");
+        emptyBoardStringBuilder.append("\r\n");
+        emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
+        emptyBoardStringBuilder.append("\n");
+        emptyBoardStringBuilder.append("-------------------------");
+        emptyBoardStringBuilder.append("\r\n");
+        emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
+        emptyBoardStringBuilder.append("\n");
+        emptyBoardStringBuilder.append("-------------------------");
+        emptyBoardStringBuilder.append("\r\n");
+        emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
+        emptyBoardStringBuilder.append("\n");
+        emptyBoardStringBuilder.append("-------------------------");
+        emptyBoardStringBuilder.append("\r\n");
+        emptyBoardStringBuilder.append("  |   |   |   |   |   |  ");
+        emptyBoardStringBuilder.append("\n");
+        emptyBoardStringBuilder.append("-------------------------");
+        emptyBoardStringBuilder.append("\r\n\r\n");
+
+        this.board.printBoard();
+        assert(outContent.toString().equals(emptyBoardStringBuilder.toString()));
+
+        ConnectFourBoard spyBoard = spy(this.board);
+        ConnectFourBoard.Player[][] fakeBoard = {
+                {ConnectFourBoard.Player.O, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE},
+                {ConnectFourBoard.Player.X, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE},
+                {ConnectFourBoard.Player.O, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE},
+                {ConnectFourBoard.Player.X, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE},
+                {ConnectFourBoard.Player.O, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE, ConnectFourBoard.Player.NONE},
+                {ConnectFourBoard.Player.X, ConnectFourBoard.Player.O, ConnectFourBoard.Player.X, ConnectFourBoard.Player.O, ConnectFourBoard.Player.X, ConnectFourBoard.Player.O, ConnectFourBoard.Player.X},
+        };
+
+        StringBuilder nonEmptyBoardStringBuilder = new StringBuilder();
+        nonEmptyBoardStringBuilder.append("\r\n");
+        nonEmptyBoardStringBuilder.append("O |   |   |   |   |   |  ");
+        nonEmptyBoardStringBuilder.append("\n");
+        nonEmptyBoardStringBuilder.append("-------------------------");
+        nonEmptyBoardStringBuilder.append("\r\n");
+        nonEmptyBoardStringBuilder.append("X |   |   |   |   |   |  ");
+        nonEmptyBoardStringBuilder.append("\n");
+        nonEmptyBoardStringBuilder.append("-------------------------");
+        nonEmptyBoardStringBuilder.append("\r\n");
+        nonEmptyBoardStringBuilder.append("O |   |   |   |   |   |  ");
+        nonEmptyBoardStringBuilder.append("\n");
+        nonEmptyBoardStringBuilder.append("-------------------------");
+        nonEmptyBoardStringBuilder.append("\r\n");
+        nonEmptyBoardStringBuilder.append("X |   |   |   |   |   |  ");
+        nonEmptyBoardStringBuilder.append("\n");
+        nonEmptyBoardStringBuilder.append("-------------------------");
+        nonEmptyBoardStringBuilder.append("\r\n");
+        nonEmptyBoardStringBuilder.append("O |   |   |   |   |   |  ");
+        nonEmptyBoardStringBuilder.append("\n");
+        nonEmptyBoardStringBuilder.append("-------------------------");
+        nonEmptyBoardStringBuilder.append("\r\n");
+        nonEmptyBoardStringBuilder.append("X | O | X | O | X | O | X");
+        nonEmptyBoardStringBuilder.append("\n");
+        nonEmptyBoardStringBuilder.append("-------------------------");
+        nonEmptyBoardStringBuilder.append("\r\n\r\n");
+
+        doReturn(fakeBoard).when(spyBoard).getBoard();
+
+        outContent.reset();
+        spyBoard.printBoard();
+
+        assert(outContent.toString().equals(nonEmptyBoardStringBuilder.toString()));
     }
 
     /**
