@@ -1,5 +1,6 @@
 import ConnectFour.ConnectFourBoard;
 import ConnectFour.InvalidMoveException;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,6 +16,7 @@ public class ConnectFourBoardTest {
     private static final int COLUMNS = 7;
     private static final int ROWS = 6;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
 
     private ConnectFourBoard board;
 
@@ -22,6 +24,11 @@ public class ConnectFourBoardTest {
     public void setup() {
         this.board = new ConnectFourBoard();
         System.setOut(new PrintStream(outContent));
+    }
+
+    @After
+    public void restoreStreams() {
+        System.setOut(originalOut);
     }
 
     /**
