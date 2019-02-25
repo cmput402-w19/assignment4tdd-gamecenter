@@ -10,7 +10,6 @@ public class ConnectFourGame {
     private int ties;
     private int numOfPlayerXWins;
     private int numOfPlayerOWins;
-    private Scanner keyboardScanner;
 
     /**
      * Initializes a new instance of the ConnectFourGame class.
@@ -20,7 +19,6 @@ public class ConnectFourGame {
         this.ties = 0;
         this.numOfPlayerXWins = 0;
         this.numOfPlayerOWins = 0;
-        this.keyboardScanner = new Scanner(System.in);
     }
 
     /**
@@ -29,7 +27,7 @@ public class ConnectFourGame {
      * Based on TicTacToe "playGame" by Sarah Nadi:
      * https://github.com/cmput402-w19/tictactoe
      */
-    public void playGame() {
+    public void playGame(Scanner scanner) {
         while (this.board.getWinner() == null) {
             if (this.board.isFull()) {
                 break;
@@ -38,7 +36,7 @@ public class ConnectFourGame {
             this.board.printBoard();
             this.promptNextPlayer();
 
-            String line = this.keyboardScanner.nextLine();
+            String line = scanner.nextLine();
 
             try {
                 this.board.playMove(Integer.parseInt(line));
@@ -110,32 +108,31 @@ public class ConnectFourGame {
     }
 
     /**
-     * Main static method for running connect four
-     * @param args command line arguments
+     * Runs connect four.
      *
      * Based on TicTacToe "main" by Sarah Nadi:
      * https://github.com/cmput402-w19/tictactoe
      */
-    public static void main(String args[]) {
-        ConnectFourGame game = new ConnectFourGame();
+    public void start() {
         boolean play = true;
+        Scanner scanner = new Scanner(System.in);
 
         while (play) {
-            game.playGame();
+            this.playGame(scanner);
 
             // Error check value till response is either y or n
             String response = "";
             while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n")) {
                 System.out.print("Would you like to play again (y/n): ");
-                response = game.keyboardScanner.nextLine();
+                response = scanner.nextLine();
             }
 
             if (response.equalsIgnoreCase("n")) {
                 play = false;
-                game.printScoreBoard();
+                this.printScoreBoard();
             }
             else {
-                game.resetGame();
+                this.resetGame();
             }
         }
     }

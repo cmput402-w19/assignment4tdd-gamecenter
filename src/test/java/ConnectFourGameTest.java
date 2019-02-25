@@ -53,7 +53,8 @@ public class ConnectFourGameTest {
         ByteArrayInputStream in = new ByteArrayInputStream(inputStringBuilder.toString().getBytes());
         System.setIn(in);
 
-        ConnectFourGame.main(null);
+        ConnectFourGame connectFour = new ConnectFourGame();
+        connectFour.start();
 
         StringBuilder scoreBoardStringBuilder = new StringBuilder();
         scoreBoardStringBuilder.append("\n-------------------------------------------");
@@ -104,7 +105,8 @@ public class ConnectFourGameTest {
         ByteArrayInputStream in = new ByteArrayInputStream(inputStringBuilder.toString().getBytes());
         System.setIn(in);
 
-        ConnectFourGame.main(null);
+        ConnectFourGame connectFour = new ConnectFourGame();
+        connectFour.start();
 
         StringBuilder scoreBoardStringBuilder = new StringBuilder();
         scoreBoardStringBuilder.append("\n-------------------------------------------");
@@ -155,7 +157,8 @@ public class ConnectFourGameTest {
         ByteArrayInputStream in = new ByteArrayInputStream(inputStringBuilder.toString().getBytes());
         System.setIn(in);
 
-        ConnectFourGame.main(null);
+        ConnectFourGame connectFour = new ConnectFourGame();
+        connectFour.start();
 
         StringBuilder scoreBoardStringBuilder = new StringBuilder();
         scoreBoardStringBuilder.append("\n-------------------------------------------");
@@ -273,7 +276,8 @@ public class ConnectFourGameTest {
         ByteArrayInputStream in = new ByteArrayInputStream(inputStringBuilder.toString().getBytes());
         System.setIn(in);
 
-        ConnectFourGame.main(null);
+        ConnectFourGame connectFour = new ConnectFourGame();
+        connectFour.start();
 
         StringBuilder scoreBoardStringBuilder = new StringBuilder();
         scoreBoardStringBuilder.append("\n-------------------------------------------");
@@ -341,7 +345,8 @@ public class ConnectFourGameTest {
         ByteArrayInputStream in = new ByteArrayInputStream(inputStringBuilder.toString().getBytes());
         System.setIn(in);
 
-        ConnectFourGame.main(null);
+        ConnectFourGame connectFour = new ConnectFourGame();
+        connectFour.start();
 
         StringBuilder scoreBoardStringBuilder = new StringBuilder();
         scoreBoardStringBuilder.append("\n-------------------------------------------");
@@ -390,7 +395,8 @@ public class ConnectFourGameTest {
         ByteArrayInputStream in = new ByteArrayInputStream(inputStringBuilder.toString().getBytes());
         System.setIn(in);
 
-        ConnectFourGame.main(null);
+        ConnectFourGame connectFour = new ConnectFourGame();
+        connectFour.start();
 
         StringBuilder scoreBoardStringBuilder = new StringBuilder();
         scoreBoardStringBuilder.append("\n-------------------------------------------");
