@@ -33,6 +33,7 @@
                         <excludes>
                             <exclude>main/menu.class</exclude>
                             <exclude>gomoku/goMain.class</exclude>
+							<exclude>hangman/HangmanGame.class</exclude>
                         </excludes>
                     </instrumentation>
                     <formats>
